@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 import models.Estudiante;
 
@@ -8,6 +10,43 @@ public class App {
         //runEjemplosPrimitivos();
         runEjemplosObjetos();
         runComparators();
+        runComparatorsObj();
+        runComparatorsObj2();
+
+    }
+    private static void runComparatorsObj(){
+        List<Integer>numero = new ArrayList<>(List.of(5,6,4,1,2,3));
+        //ordenar de menor a mayor
+        numero.sort(Comparator.naturalOrder());
+        System.out.println(numero);
+
+        numero.sort(Comparator.reverseOrder());
+        System.out.println(numero);
+    }
+
+    private static void runComparatorsObj2(){
+         Estudiante e1  = new Estudiante("Juan", 4.5);
+        Estudiante [] estudiantes = {e1, 
+            new Estudiante("Maria", 7),     
+            new Estudiante("Maria", 3.5), 
+            new Estudiante("Pedro", 6.8),
+        };
+        Comparator.naturalOrder();
+        Comparator.reverseOrder();
+        Comparator<Estudiante>compNota = Comparator.comparingDouble(e -> e.getNota());
+        Arrays.sort(estudiantes,compNota);
+        System.out.println(Arrays.toString(estudiantes));
+
+        List<Estudiante> estudiantesLista = new ArrayList<>(List.of(
+            new Estudiante("Maria", 7),     
+            new Estudiante("Maria", 3.5), 
+            new Estudiante("Pedro", 6.8)
+
+
+        ));
+        
+        estudiantesLista.sort(compNota);
+        System.out.println(estudiantesLista);
 
     }
 
